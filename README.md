@@ -38,7 +38,7 @@
 * **Adicionar à biblioteca:** Botão direito no ficheiro > **Add as library**.
 * **Projeto Gradle (Opcional):** No ficheiro `build.gradle.kts`adiciona a seguinte linha para garantir que a biblioteca é encontrada:
 
-```json
+```kotlin
 dependencies {
     implementation(files("lib/Projson.jar"))
 }
@@ -46,10 +46,7 @@ dependencies {
 
 * **Teste de funcionamento:** Correr o seguinte teste para garantir que está funcional:
 
-```json
-import projson.model.*
-import projson.core.*
-
+```kotlin
 fun main() {
 
     val myTask = Task("FinishProject", null, emptyList())
