@@ -32,4 +32,32 @@
 ```
 ---
 
-##
+## 📥 Instalação
+
+* **Importar o JAR:** Copiar o ficheiro `ProJson.jar` para uma pasta `lib` no seu projeto.
+* **Adicionar à biblioteca:** Botão direito no ficheiro > **Add as library**.
+* **Projeto Gradle (Opcional):** No ficheiro `build.gradle.kts`adiciona a seguinte linha para garantir que a biblioteca é encontrada:
+
+```json
+dependencies {
+    implementation(files("lib/Projson.jar"))
+}
+```
+
+* **Teste de funcionamento:** Correr o seguinte teste para garantir que está funcional:
+
+```json
+import projson.model.*
+import projson.core.*
+
+fun main() {
+
+    val myTask = Task("FinishProject", null, emptyList())
+
+    val engine = ProJson()
+
+    val json = engine.toJson(myTask)
+
+    println(json.toJsonString())
+}
+```
