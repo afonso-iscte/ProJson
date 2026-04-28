@@ -11,6 +11,14 @@ class JsonArray: JsonValue() {
         array.add(value)
     }
 
+    fun remove(index: Int) {
+        array.removeAt(index)
+    }
+
+    fun set(index: Int, value: JsonValue) {
+        if (index in array.indices) array[index] = value
+    }
+
     override fun toJsonString(indent: String): String {
         val lista = array.joinToString(", ") {it?.toJsonString()?: "null"}
         return "[$lista]"

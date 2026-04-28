@@ -22,6 +22,13 @@ class ProJson {
             return obj
         if (obj is Boolean || obj is Number || obj is String)
             return JsonPrimitive(obj)
+        if (obj is Map<*, *>) {
+            val jobj = JsonObject()
+            obj.forEach { (key, value) ->
+                jobj.setProperty(key.toString(), toJson(value))
+            }
+            return jobj
+        }
         if (obj is Collection<*>) {
             val array = JsonArray()
             obj.forEach { item ->
@@ -52,8 +59,7 @@ class ProJson {
 
         val jobj = JsonObject()
         val kClass = obj.javaClass
-
-        jobj.setProperty("\$id", JsonPrimitive(novoId))
+            jobj.setProperty("\$id", JsonPrimitive(novoId))
         jobj.setProperty("\$type", JsonPrimitive(kClass.simpleName))
 
         kClass.declaredFields.forEach { field ->
